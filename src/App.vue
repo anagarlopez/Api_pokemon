@@ -1,5 +1,5 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
 import Login from './components/Login.vue'
 
@@ -12,11 +12,11 @@ import Login from './components/Login.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" /> -->
       <Login></Login>
-   <!--    <nav>
+   <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div> -->
+        <RouterLink to="/login">Login</RouterLink>
+    </nav>
+    <!-- </div> --> -->
   <!-- </header> -->
 
   <RouterView />
