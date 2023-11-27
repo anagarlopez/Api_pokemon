@@ -4,14 +4,15 @@
 
 <template> 
 
-<body>"     
-  
-  class="bg-image"
+<body>    
+  <div class="bg-image"
   style="
-    background-image: url('../assets/');
+    background-image: url('../assets/Pictures/images (24).jpg');
     height: 100vh;
-  "
->
+  ">
+  </div>
+ 
+
 <form>
 
     <h1>Bienvenido</h1>
@@ -25,9 +26,9 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
   </div>
- 
-    <button type="submit" class="btn btn-primary">Log in</button>
-    
+    <div class="p-3 mb-2 bg-danger text-white">
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </div>
   </form>
 </body>
 </template>
