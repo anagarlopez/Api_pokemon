@@ -8,7 +8,7 @@
     <div class="header">
       <nav>
     <img src="./../assets/photos pokemon/Logo_de_Pokémon_HOME.png" alt="Logo_pokemon" />
-    <RouterLink to="/about">LOG IN<img src="./../assets/photos pokemon/" alt="pokeball" /></RouterLink>
+    <RouterLink to="/about">LOG IN<img src="./../assets/photos pokemon/Pokebola.png" alt="pokeball" /></RouterLink>
   </nav>
   </div>
   </header>
@@ -17,7 +17,7 @@
 
 
     <footer>
-      <p>© {{ currentYear }} Pokemon-Games. Todos los derechos reservados.</p>
+      <p>© 2023 Pokemon-Games. Todos los derechos reservados.</p>
     </footer>
 </template>
 
@@ -34,5 +34,15 @@ header {
 img {
   max-height: 50px;
  }
+
+ footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
 </style>
