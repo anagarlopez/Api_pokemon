@@ -6,6 +6,26 @@ import Login from './components/Login.vue'
 </script>
 
 <template>
+
+<template>
+  <div id="app">
+    <LoginForm />
+  </div>
+</template>
+
+<script>
+import { pinia } from '@/store';
+import LoginForm from '@/components/LoginForm.vue';
+
+export default {
+  components: {
+    LoginForm,
+  },
+  setup() {
+    pinia.useVue3Devtools();
+  },
+};
+</script>
  <!--  <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 

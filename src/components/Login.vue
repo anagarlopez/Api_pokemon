@@ -5,15 +5,28 @@
 <template> 
 
 <body>    
-  <div class="bg-image"
-  style="
-    background-image: url('../assets/Pictures/images (24).jpg');
-    height: 100vh;
-  ">
-  </div>
+
+  <!-- <div id="app" class="container mt-5">
+  <h2>Formulario de Contacto</h2>
+  <form>
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input v-model="nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+    </div>
+    <div class="form-group">
+      <label for="email">Correo electrónico:</label>
+      <input v-model="email" type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+    </div>
+    <div class="form-group">
+      <label for="mensaje">Mensaje:</label>
+      <textarea v-model="mensaje" class="form-control" id="mensaje" rows="4" placeholder="Ingrese su mensaje"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" @click.prevent="enviarFormulario">Enviar</button>
+  </form>
+</div>
  
 
-<form>
+<form> -->
 
     <h1>Bienvenido</h1>
   <div class="form-group">
