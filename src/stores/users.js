@@ -4,7 +4,7 @@ import {defineStore} from "pinia";
 
 export const useUseStore = defineSore('users', () => {
 
-    const coders = reactive([
+    const users = reactive([
         {
             username: 'admin',
             password: 'dflkldfkldk',
@@ -16,5 +16,5 @@ export const useUseStore = defineSore('users', () => {
         },
     ])
 
-    return { coders }
+    return { users }
 })
