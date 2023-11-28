@@ -1,10 +1,12 @@
 <!-- views/Home.vue -->
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap'
+import Card1 from '../components/Carditems/Card1.vue';
+
 
 </script>
 <template>
+  
+  <Card1 /> 
   
   
 </template>
