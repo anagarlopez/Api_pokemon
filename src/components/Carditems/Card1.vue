@@ -1,9 +1,9 @@
 <script setup>
+import { ref } from "vue";
+
+const { pokemons, data } = defineProps(["pokemons", "data"]);
 
 
-// export default {
-//  name: 'Footer',
-// };
 </script>
 <template>
     <div class="card1" style="width: 18rem;">
@@ -14,6 +14,14 @@
                 content.</p>
             <a href="#" class="btn btn-primary">Estadisticas</a>
         </div>
+    </div>
+
+    <div>
+        <div>
+            v-for= "pokemon in pokemons": :key="pokemon.id"
+        </div>
+       
+        <h3>{pokemon.name}</h3>
     </div>
 </template>
 <style lang="scss" scoped></style>
