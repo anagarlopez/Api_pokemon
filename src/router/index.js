@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
 
   const store = useAuthStore()
 
-  if (to.meta.requiresAuth) {
+  if (to.meta.requiresAuth && !store.user.isAutenthificated) {
     return { name: 'login'}
   }
   // to and from are both route objects. must call `next`.
