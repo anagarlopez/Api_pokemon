@@ -13,11 +13,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
-    }
+    },
     {
-      path: '/favourites',
-      name: 'favourites',
-      component: () => import('../views/FavouritesView.vue')
+      path: '/favorites',
+      name: 'favorites',
+      component: () => import('../views/FavoritesView.vue')
     }
   ]
 })

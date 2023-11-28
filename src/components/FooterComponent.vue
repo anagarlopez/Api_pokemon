@@ -11,9 +11,9 @@
         <div class="rrss">
 
             <img src="/src/assets/photos pokemon/iconos/facebook.png" alt="facebook">
-            <img src="/src/assets/photos pokemon/iconos/instagram.png.png" alt="instagram">
-            <img src="/src/assets/photos pokemon/iconos/youtube.png.png" alt="youtube">
-            <img src="/src/assets/photos pokemon/iconos/mail.png.png" alt="email">
+            <img src="/src/assets/photos pokemon/iconos/instagram.png" alt="instagram">
+            <img src="/src/assets/photos pokemon/iconos/youtube.png" alt="youtube">
+            <img src="/src/assets/photos pokemon/iconos/mail.png" alt="email">
         </div>
     </div>
 

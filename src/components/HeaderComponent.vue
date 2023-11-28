@@ -14,7 +14,7 @@
     <RouterLink class="routerLink" to="/">HOME</RouterLink>
       
     <RouterLink class="routerLink" to="/login">LOG IN<img src="./../assets/photos pokemon/Logos/Pokebola.png" alt="pokeball" /></RouterLink>
-    <!-- <RouterLink to="/favourites">Favorites</RouterLink> -->
+    <!-- <RouterLink to="/favorites">Favorites</RouterLink> -->
   </nav>
   
 </div>
