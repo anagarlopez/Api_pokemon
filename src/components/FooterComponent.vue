@@ -10,10 +10,10 @@
 
         <div class="rrss">
 
-            <img src="/src/assets/photos pokemon/iconos/facebook.png" alt="facebook">
-            <img src="/src/assets/photos pokemon/iconos/instagram.png" alt="instagram">
-            <img src="/src/assets/photos pokemon/iconos/youtube.png" alt="youtube">
-            <img src="/src/assets/photos pokemon/iconos/mail.png" alt="email">
+            <img src="./../assets/photos/iconos/facebook.png" alt="">
+            <img src="/src/assets/photos/iconos/instagram.png" alt="instagram">
+            <img src="/src/assets/photos/iconos/youtube.png" alt="youtube">
+            <img src="/src/assets/photos/iconos/mail.png" alt="email">
         </div>
     </div>
 
