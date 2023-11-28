@@ -2,19 +2,16 @@ import {ref, reactive} from "vue";
 import {defineStore} from "pinia";
 
 
-export const useUseStore = defineSore('users', () => {
+export const useAuthStore = defineSore('auth', () => {
 
-    const users = reactive([
+    const user = reactive([
         {
             username: 'admin',
-            password: 'dflkldfkldk',
-            isAuthenticated: true
+            password: 'my-password ',
+            isAuthenticated: false
         },
-        {
-            name: 'Eva',
-            isPresent: false
-        },
+       
     ])
 
-    return { users }
+    return { user }
 })

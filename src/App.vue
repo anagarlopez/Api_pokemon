@@ -2,39 +2,21 @@
 
 import { RouterLink, RouterView } from 'vue-router'
 import Login from './components/Login.vue'
-
+import { pinia } from '@/store';
+import LoginForm from '@/components/LoginForm.vue';
 </script>
 
 <template>
 
-
-
-<script>
-import { pinia } from '@/store';
-import LoginForm from '@/components/LoginForm.vue';
-
-export default {
-  components: {
-    LoginForm,
-  },
-  setup() {
-    pinia.useVue3Devtools();
-  },
-};
-</script>
- <!--  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <header>
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" /> -->
-      <Login></Login>
-   <nav>
+      <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
-    </nav>
-    <!-- </div> --> 
-  <!-- </header> -->
-
+      </nav>
+    </div>
+  </header>
   <RouterView />
 </template>
 
