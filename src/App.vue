@@ -1,13 +1,12 @@
 <script setup>
 
 import { RouterLink, RouterView } from 'vue-router'
-import Login from './components/Login.vue'
+// import Login from './components/Login.vue'
 import { pinia } from '@/store';
-import LoginForm from '@/components/LoginForm.vue';
+import LoginForm from './components/LoginForm.vue';
 </script>
 
 <template>
-
   <header>
 
     <div class="wrapper">
@@ -17,7 +16,9 @@ import LoginForm from '@/components/LoginForm.vue';
       </nav>
     </div>
   </header>
+
   <RouterView />
+  <LoginForm />
 </template>
 
 
