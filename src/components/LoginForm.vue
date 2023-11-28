@@ -7,14 +7,21 @@ import {useAuthStore} from '@/store/auth.js'
 const username = ref ('')
 const password = ref ('')
 
+const route = useRoute()
+const router = useRouter()
+
 const store = useAuthStore ()
 
 function login () {
 
     if (username == store.user.username) {
         store.user.isAuthenticated = false
+        const redirectPath = route.query.redirect
+        router.push(redirectPath)
+
     }
 }
+
 </script>
 
 <template> 
@@ -26,12 +33,12 @@ function login () {
       <h1>Bienvenido</h1>
       <div class="form-group">
   
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" v-model="email">
 
       </div>
       <div class="form-group">
     
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
 
       </div>
       <div class="p-3 mb-2 bg-danger text-white">
