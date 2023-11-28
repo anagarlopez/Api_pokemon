@@ -1,9 +1,15 @@
 <template>
     <div>
         <h1>Soy la pokeapi</h1>
-        <PokeApiList :pokemons="pokemons" :colors="colors" />
+        <PokeApiList :pokemons="pokemons" :colors="colors" @toggle-favorite="toggleFavorite" />
         <button v-if="prevUrl" class="button" @click="updatePokemons(prevUrl)">Back</button>
         <button v-if="nextUrl" class="button" @click="updatePokemons(nextUrl)">Next</button>
+        <div>
+            <h2>Mis Pokémon favoritos</h2>
+            <ul>
+                <li v-for="pokemon in favorites" :key="pokemon.name">{{ pokemon.name }}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -12,6 +18,7 @@
     import PokeApiList from '../components/PokeApiList.vue';
 
     const pokemons = ref([]);
+    const favorites = ref([]);
     const colors = {
         fire: '#FDDFDF',
         grass: '#DEFDE0',
@@ -47,6 +54,17 @@
             .catch(error => {
                 console.error('Error al obtener los Pokémon:', error);
             });
+    };
+
+    const toggleFavorite = (pokemon) => {
+        const index = favorites.value.findIndex(fav => fav.name === pokemon.name);
+        if (index !== -1) {
+            // Si el Pokémon ya está en favoritos, lo quitamos
+            favorites.value.splice(index, 1);
+        } else {
+            // Si el Pokémon no está en favoritos, lo añadimos
+            favorites.value.push(pokemon);
+        }
     };
 
     onMounted(() => {
