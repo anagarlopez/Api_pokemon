@@ -6,7 +6,7 @@ export const useAuthStore = defineSore('auth', () => {
 
     const user = reactive([
         {
-            username: 'admin',
+            email: 'email',
             password: 'my-password ',
             isAuthenticated: false
         },

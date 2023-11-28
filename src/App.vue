@@ -1,8 +1,6 @@
 <script setup>
 
 import { RouterLink, RouterView } from 'vue-router'
-// import Login from './components/Login.vue'
-import { pinia } from '@/store';
 import LoginForm from './components/LoginForm.vue';
 </script>
 

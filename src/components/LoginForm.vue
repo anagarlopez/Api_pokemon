@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter} from 'vue-router'
 
-import {useAuthStore} from '@/store/auth.js'
+import {useAuthStore} from '@/stores/auth.js'
 
 const username = ref ('')
 const password = ref ('')
@@ -10,12 +10,12 @@ const password = ref ('')
 const route = useRoute()
 const router = useRouter()
 
-const store = useAuthStore ()
+const stores = useAuthStore ()
 
 function login () {
 
-    if (username == store.user.username) {
-        store.user.isAuthenticated = false
+    if (username == !stores.user.username) {
+        stores.user.isAuthenticated = false
         const redirectPath = route.query.redirect
         router.push(redirectPath)
 
@@ -44,8 +44,9 @@ function login () {
       <div class="p-3 mb-2 bg-danger text-white">
         <button type="submit" class="btn btn-primary">Log in</button>
       </div>
+    </form> 
   </div>
-    </form>
+   
 
 </template>
 
