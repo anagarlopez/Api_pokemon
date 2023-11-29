@@ -4,7 +4,7 @@ import { useRoute, useRouter} from 'vue-router'
 
 import {useAuthStore} from '@/stores/auth.js'
 
-const username = ref ('')
+const email = ref ('')
 const password = ref ('')
 
 const route = useRoute()
@@ -14,7 +14,7 @@ const stores = useAuthStore ()
 
 function login () {
 
-    if (username == !stores.user.username) {
+    if (username == !stores.user.email) {
         stores.user.isAuthenticated = false
         const redirectPath = route.query.redirect
         router.push(redirectPath)
