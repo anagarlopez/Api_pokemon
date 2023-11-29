@@ -11,6 +11,7 @@ import LoginForm from './components/LoginForm.vue';
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/favourites">Favourites</RouterLink>
       </nav>
     </div>
   </header>
