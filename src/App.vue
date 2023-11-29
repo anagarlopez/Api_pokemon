@@ -13,6 +13,6 @@ import Card1 from '../src/components/Carditems/Card1.vue';
   <Footer/>
 </template>
 
-<style scoped>
+<style>
 
 </style>

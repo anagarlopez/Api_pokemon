@@ -1,6 +1,4 @@
 <script>
-import 'bootstrap-icons/font/bootstrap-icons.css'
-
 export default {
  name: 'Footer',
 };
