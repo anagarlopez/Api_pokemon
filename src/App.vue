@@ -1,13 +1,10 @@
-<!-- App.vue -->
-
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
-  import PokeApi from './views/PokeApi.vue';
-
+  import { ref, onMounted } from 'vue'
 </script>
 
 <template>
-       <div class="wrapper">
+  <div>
         <header>
           <nav>
               <RouterLink to="/">Home</RouterLink>
@@ -29,6 +26,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 </style>
