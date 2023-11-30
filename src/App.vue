@@ -1,7 +1,5 @@
-<!-- App.vue -->
 <template>
   <header>
-    <div id="app">
     <h1>Pokedex</h1>
     <div class="poke-container">
       <div class="pokemon" v-for="pokemon in pokemons" :key="pokemon.id">
@@ -19,9 +17,7 @@
       <button class="button" @click="updatePokemons(previousUrl)" v-if="previousUrl">Back</button>
       <button class="button" @click="updatePokemons(nextUrl)" v-if="nextUrl">Next</button>
     </div>
-  </div>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-      <div class="wrapper">
+      <div>
           <nav>
               <RouterLink to="/">Home</RouterLink>
               <RouterLink to="/about">About</RouterLink>
@@ -34,7 +30,6 @@
 
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
-  import PokeApi from './views/PokeApi.vue';
   import { ref, onMounted } from 'vue'
 
 const pokemons = ref([])
@@ -73,6 +68,5 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 </style>
