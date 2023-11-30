@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter} from 'vue-router'
+import { useAuthStore } from '../stores/auth';
 
-import {useAuthStore} from '@/stores/auth.js'
+
 
 const email = ref ('')
 const password = ref ('')
@@ -10,12 +11,12 @@ const password = ref ('')
 const route = useRoute()
 const router = useRouter()
 
-const store = useAuthStore ()
+const store = useAuthStore()
 
 function login () {
 
-    if (username == !store.user.email) {
-        store.user.isAuthenticated = false
+    if (email.value === store.user.email && password.value === store.user.password) {
+        store.user.isAuthenticated = true
         const redirectPath = route.query.redirect
         router.push(redirectPath)
 
@@ -28,7 +29,7 @@ function login () {
 
   <div>
 
-    <form @submit.prevent ="login">
+    <form @submit.prevent="login">
 
       <h1>Bienvenido</h1>
       <div class="form-group">

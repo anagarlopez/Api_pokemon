@@ -30,12 +30,13 @@ const router = createRouter({
   {
     path: '/favourites',
     name: 'favourites',
-    component: FavouritesView
+    component: FavouritesView,
+    meta: {isAuthenticated: true}
   }
 ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
 
   const stores = useAuthStore()
 
