@@ -16,8 +16,6 @@
   <RouterView />
 </template>
 
-
-
 <style lang="scss" scoped>
 .pokemon{
     margin: 2rem;
