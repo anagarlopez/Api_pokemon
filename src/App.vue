@@ -16,9 +16,12 @@ let navigation = document.querySelector(".numbers");
 const pokeURL = "https://pokeapi.co/api/v2/pokemon";
 let nextLink = "";
 let prevLink = "";
+let count = 0;
+let perPage = 40;
 
 const changePg = (value) => {
   const newUrl = `${pokeURL}?limit=${value}`;
+  perPage = value;
   getPokemos(newUrl);
 }
 
@@ -36,7 +39,9 @@ const getPokemos = (url) => {
     .then(responseJson => {
       console.log(responseJson);
       nextLink = responseJson.next;
-      prevLink = responseJson.previous;      
+      prevLink = responseJson.previous;    
+      count = responseJson.count;
+      addNumber()  ;
       showPokemons(responseJson.results);
     })
 }
@@ -53,11 +58,12 @@ const showPokemons = (array) => {
 
 const loadCard = (data) => {
   const imagen = data.sprites.other.home.front_default;
+  const newImage = imagen ? imagen : "./images/default.png";
   const name = data.name;
 
   let card = document.createElement("div");
   let content =`
-  <img src="${imagen}" alt="${name}">
+  <img src="${newImage}" alt="${name}">
     <p>${name}</p>
     <p>${data.order}</p>
   `;
@@ -65,7 +71,33 @@ const loadCard = (data) => {
   container.appendChild(card);
 }
 
-getPokemos(`${pokeURL}`)
+const addNumber = () => {
+  clearNavigation();
+  const page = count / perPage;
+  for (let i = 0; i < page; i++) {
+    const element = array[i];
+    let number = document.createElement("span");
+    number.classList.add(`element-${i}`)
+    const numLink = `<button onclick="actionNum(${i})">${i}</button>`
+    number.innerHTML = numLink;
+    navigation.appendChild(number);
+  }
+  addFocusClass();
+
+}
+
+const actionNum = (index) => {
+  const newUrl = `${pokeURL}?offset=${index*perPage}&limit=${perPage}`;
+  getPokemos(newUrl);
+}
+
+const addFocusClass = () => {
+  const span = document.querySelector()
+}
+const clearContainer = () => container.innerHTML = "";
+const clearNavigation = () => navigation.innerHTML = "";
+
+getPokemos(`${pokeURL}?offset=0&limit=40`)
 
 /* 
 // CÓDIGO BORJA
