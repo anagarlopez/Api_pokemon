@@ -10,12 +10,12 @@ const password = ref ('')
 const route = useRoute()
 const router = useRouter()
 
-const stores = useAuthStore ()
+const store = useAuthStore ()
 
 function login () {
 
-    if (username == !stores.user.email) {
-        stores.user.isAuthenticated = false
+    if (username == !store.user.email) {
+        store.user.isAuthenticated = false
         const redirectPath = route.query.redirect
         router.push(redirectPath)
 

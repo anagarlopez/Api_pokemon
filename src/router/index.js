@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import FavouritesView from '@/views/FavouritesView.vue'
 import LoginView from '../views/LoginView.vue'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '../stores/auth.js'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
