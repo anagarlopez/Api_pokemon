@@ -5,7 +5,7 @@ import { useAuthStore } from '../stores/auth';
 
 
 
-const email = ref ('')
+const username = ref ('')
 const password = ref ('')
 
 const route = useRoute()
@@ -15,7 +15,7 @@ const store = useAuthStore()
 
 function login () {
 
-    if (email.value === store.user.email && password.value === store.user.password) {
+    if (username.value === store.user.username) {
         store.user.isAuthenticated = true
         const redirectPath = route.query.redirect
         router.push(redirectPath)
@@ -32,11 +32,11 @@ function login () {
     <form @submit.prevent="login">
 
       <h1>Bienvenido</h1>
-      <div class="form-group">
+      <label class="form-group">
   
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" v-model="email">
+        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" v-model="username">
 
-      </div>
+      </label>
       <div class="form-group">
     
         <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">

@@ -1,7 +1,7 @@
 <script setup>
 
 import { RouterLink, RouterView } from 'vue-router'
-import LoginForm from './components/LoginForm.vue';
+// import LoginForm from './components/LoginForm.vue';
 </script>
 
 <template>
@@ -17,7 +17,7 @@ import LoginForm from './components/LoginForm.vue';
   </header>
 
   <RouterView />
-  <LoginForm />
+  
 </template>
 
 

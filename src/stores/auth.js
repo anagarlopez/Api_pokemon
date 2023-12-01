@@ -6,8 +6,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     const user = reactive([
         {
-            email: 'email@email.com',
-            password: 'my-password ',
+            username: 'pokemon',
+            password: '123456',
             isAuthenticated: false
         },
        

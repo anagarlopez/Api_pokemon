@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FavouritesView from '@/views/FavouritesView.vue'
 import LoginView from '../views/LoginView.vue'
-import { storeToRefs } from 'pinia'
+
 import { useAuthStore } from '../stores/auth.js'
 
 const router = createRouter({
@@ -25,8 +25,9 @@ const router = createRouter({
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/LoginView.vue')
+    component: LoginView
    },
+
   {
     path: '/favourites',
     name: 'favourites',
@@ -36,12 +37,13 @@ const router = createRouter({
 ]
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
 
-  const stores = useAuthStore()
+  const store = useAuthStore()
 
-  if (to.meta.requiresAuth && !stores.user.isAutenthificated) {
-    return { name: 'login'}
+  if (to.meta.requiresAuth && !store.user.isAutenthificated) {
+    return { name: 'login'};
+    
   }
   // to and from are both route objects. must call `next`.
 })
