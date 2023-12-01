@@ -3,6 +3,9 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderComponent from "./components/HeaderComponent.vue"
 import FooterComponent from "./components/FooterComponent.vue"
+import LoginForm from './components/LoginForm.vue';
+
+
 </script>
 
 <template>
@@ -17,17 +20,29 @@ import FooterComponent from "./components/FooterComponent.vue"
     </div>
   </header> 
 
+  <div id="app">
+    <LoginForm />
+  </div>
+
+
   <RouterView />
 
   <FooterComponent />
   
 </template>
 
-<style scoped>
+<style lang="sass" scoped>
+
+  #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+  }
+
 /*header {
   line-height: 1.5;
-  max-height: 100vh;
-}
+  max-height: 100vh;}
 
 .logo {
   display: block;

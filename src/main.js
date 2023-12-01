@@ -12,3 +12,10 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
+createApp(App).mount('#app');
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app');
