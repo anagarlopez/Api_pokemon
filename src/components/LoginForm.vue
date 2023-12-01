@@ -1,28 +1,24 @@
 <script setup>
+import { useAuthStore } from '@/stores/auth';
 import { ref } from 'vue'
-import { useRoute, useRouter} from 'vue-router'
-import { useAuthStore } from '../stores/auth';
+import { useRoute, useRouter } from 'vue-router';
 
+const store = useAuthStore()
 
-
-const username = ref ('')
-const password = ref ('')
+const username = ref('')
+const password = ref('')
 
 const route = useRoute()
 const router = useRouter()
 
-const store = useAuthStore()
 
-function login () {
-
-    if (username.value === store.user.username) {
-        store.user.isAuthenticated = true
-        const redirectPath = route.query.redirect
+function login (){
+    if(username.value === store.user.username && password.value === store.user.password){
+        store.user.isAuthenticated = true;
+        const redirectPath = route.query.redirec || '/private'
         router.push(redirectPath)
-
     }
 }
-
 </script>
 
 <template> 
@@ -32,11 +28,11 @@ function login () {
     <form @submit.prevent="login">
 
       <h1>Bienvenido</h1>
-      <label class="form-group">
+      <div class="form-group">
   
-        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" v-model="username">
+        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="User" v-model="username">
 
-      </label>
+      </div>
       <div class="form-group">
     
         <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
