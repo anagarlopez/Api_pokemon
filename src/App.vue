@@ -1,9 +1,11 @@
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
   import { ref, onMounted } from 'vue'
+import SearchPokemon from './components/SearchPokemon.vue';
 </script>
 
 <template>
+  <SearchPokemon></SearchPokemon>
   <div>
         <header>
           <nav>
