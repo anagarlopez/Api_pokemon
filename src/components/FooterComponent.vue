@@ -3,7 +3,7 @@
 </script>
 
 <template>
-
+    <footer>
     <div class="footer">
 
         <p>©Todos los derechos reservados.2023. Pokemon-Games</p>
@@ -16,15 +16,15 @@
             <img src="/src/assets/photos/iconos/mail.png" alt="email">
         </div>
     </div>
-
+    </footer>
 </template>
 
 <style lang="scss" scoped>
+    @import './../../styles.scss';
+    @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
-
-    .footer {
-
+    footer {
+        
         display: none;
         
     }

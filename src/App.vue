@@ -6,24 +6,57 @@ import FooterComponent from "./components/FooterComponent.vue"
 </script>
 
 <template>
+
   <header>
-    <div class="wrapper">
-      <HeaderComponent />
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
+    <nav class="nav-icon">
+      <img id="logo-pokemon" src="./assets/photos/Logos/Logo_de_Pokémon_HOME.png" alt="" width="150">
+      <img id="pokebola" src="./assets/photos/Logos/Pokebola.png" alt="" width="50">
         <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/favorites">Favorites</RouterLink>
+        <RouterLink to="/favourites">Favourites</RouterLink>
       </nav>
-    </div>
   </header> 
 
+<main>
   <RouterView />
+</main>
 
-  <FooterComponent />
-  
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import '../styles.scss';
+
+body{
+  background-image: url("./assets/photos/Fondo_poke_4.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: 'Jockey One', sans-serif;
+}
+
+main{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+nav{
+    font-size: 2rem;
+    
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+.nav-icon{
+    padding: 1%;
+    background-color: #B1230F;
+    color: black;
+}
+#logo-pokemon{
+    float: right;
+}
+
 /*header {
   line-height: 1.5;
   max-height: 100vh;
