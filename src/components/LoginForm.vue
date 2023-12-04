@@ -23,7 +23,12 @@ function login (){
 
 <template> 
 
-  <div>
+<div class="has-bg-img">
+         <div class="bg-img bg-cover" style="background-image: url(../assets/); height:100%; width:100%;">
+        
+        
+    
+    </div>
 
     <form @submit.prevent="login">
 
