@@ -3,21 +3,22 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderComponent from "./components/HeaderComponent.vue"
 import FooterComponent from "./components/FooterComponent.vue"
+import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
-
+  <HeaderComponent />
   <header>
-    <nav class="nav-icon">
-      <img id="logo-pokemon" src="./assets/photos/Logos/Logo_de_Pokémon_HOME.png" alt="" width="150">
-      <img id="pokebola" src="./assets/photos/Logos/Pokebola.png" alt="" width="50">
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/favourites">Favourites</RouterLink>
-      </nav>
+      
   </header> 
 
 <main>
   <RouterView />
+  <HomeView />
+ 
+  <FooterComponent />
 </main>
 
 </template>

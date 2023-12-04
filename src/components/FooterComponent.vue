@@ -4,18 +4,16 @@
 
 <template>
     <footer>
-    <div class="footer">
-
-        <p>©Todos los derechos reservados.2023. Pokemon-Games</p>
-
+    <div class="footer_container">
+        <h3>©Todos los derechos reservados.2023. Pokemon-Games</h3>
         <div class="rrss">
-
             <img src="./../assets/photos/iconos/facebook.png" alt="">
             <img src="/src/assets/photos/iconos/instagram.png" alt="instagram">
             <img src="/src/assets/photos/iconos/youtube.png" alt="youtube">
             <img src="/src/assets/photos/iconos/mail.png" alt="email">
         </div>
     </div>
+
     </footer>
 </template>
 
@@ -23,11 +21,22 @@
     @import './../../styles.scss';
     @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
 
-    footer {
-        
-        display: none;
-        
-    }
+    .footer_container {
+    display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  background-color:  #B1230F;
+  h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1%;
+  }
+    
+}
+
 
 @media only screen and (min-width: 768px) {
     .footer {
@@ -49,7 +58,7 @@
             }
         }
 
-        p {
+        h3 {
             color: white;
             font-size: 20px;
             margin-left: 10px;

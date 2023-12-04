@@ -7,18 +7,11 @@
   <header>
 
     <div class="wrapper">
-
       <nav>
-
-    <img src="./../assets/photos pokemon/Logos/Logo_de_Pokémon_HOME.png" alt="Logo_pokemon">
-    <RouterLink class="routerLink" to="/">HOME</RouterLink>
-      
-    <RouterLink class="routerLink" to="/login">LOG IN<img src="./../assets/photos pokemon/Logos/Pokebola.png" alt="pokeball" /></RouterLink>
-    <!-- <RouterLink to="/favorites">Favorites</RouterLink> -->
-  </nav>
-  
+        <img src="./../assets/photos/" alt="Logo_pokemon">
+</nav>
+     
 </div>
- 
 </header>
 
 </template>
@@ -27,11 +20,12 @@
 <style lang="scss" scoped>
 
   @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
-
   nav {
 
 background-color: #B1230F;
-opacity: 1;
+width: 100%;
+height: 20vh
+opacity 2;
 
 display: flex;
 justify-content: space-evenly;
