@@ -23,34 +23,37 @@ function login (){
 
 <template> 
 
-<div class="has-bg-img">
-         <div class="bg-img bg-cover" style="background-image: url(../assets/); height:100%; width:100%;">
+  <body class=" d-flex justify-content-center align items-center vh-100">
+     
+    <form @submit.prevent="login" class="bg-danger opacity-75  p-5 rounded-5" style="width: 350px; height: 400px">
         
+      <div class="text-center fs-1 fw-bold"><h1>Welcome</h1></div>
+      <div class="input-group">
+        <div class="input-group-text">
+
         
-    
-    </div>
-
-    <form @submit.prevent="login">
-
-      <h1>Bienvenido</h1>
-      <div class="form-group">
   
-        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="User" v-model="username">
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Username" v-model="username">
+          
+          </div>
 
-      </div>
-      <div class="form-group">
+          <div class="">
     
-        <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
 
-      </div>
-      <div class="p-3 mb-2 bg-danger text-white">
-        <button type="submit" class="btn btn-primary">Log in</button>
-      </div>
+          </div>
+
+          <div class="p-3 mb-2 bg-danger text-white">
+
+            <button type="submit" class="btn btn-primary">Log in</button>
+          </div>
+          </div>
     </form> 
-  </div>
+    
    
-
+  </body>
 </template>
 
 <style lang="scss" scoped>
+
 </style>
