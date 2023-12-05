@@ -25,29 +25,28 @@ function login (){
 
   <body class=" d-flex justify-content-center align items-center vh-100">
      
-    <form @submit.prevent="login" class="bg-danger opacity-75  p-5 rounded-5" style="width: 350px; height: 400px">
+    <form @submit.prevent="login" class="bg-danger opacity-75  p-5 rounded-5" style="width: 300px; height: 350px">
         
-      <div class="text-center fs-1 fw-bold"><h1>Welcome</h1></div>
-      <div class="input-group">
-        <div class="input-group-text">
+      <div class="text-center fw-bold mt-4"><h1>Welcome</h1></div>
 
+      <div class="input-group mt-1">
         
-  
-            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Username" v-model="username">
+      <input class="form-control border border-black" type="text"  id="email" aria-describedby="emailHelp" placeholder="Username" v-model="username">
           
-          </div>
+      </div>
 
-          <div class="">
+      <div class="input-group mt-3 ">
     
-            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+        <input class="form-control border border-black" type="password"  id="password" placeholder="Password" v-model="password">
 
-          </div>
+      </div>
 
-          <div class="p-3 mb-2 bg-danger text-white">
+      <!-- <div class=" form-control p-3 mb-2 text-black"> -->
 
-            <button type="submit" class="btn btn-primary">Log in</button>
-          </div>
-          </div>
+          <button type="submit" class=" form-control btn btn border border-black mt-3">Log in</button> 
+
+        <!-- </div> -->
+      
     </form> 
     
    
@@ -55,5 +54,20 @@ function login (){
 </template>
 
 <style lang="scss" scoped>
+
+body {
+background-image: url("../assets/Images/Fondo_poke_5.jpeg");
+background-size: cover;
+background-repeat: no-repeat;
+height: 100vh;
+}
+
+form {
+  margin-top: 35vh;
+}
+
+button {
+  background-color: #FF9393;
+}
 
 </style>
