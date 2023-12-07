@@ -11,14 +11,19 @@ const password = ref('')
 const route = useRoute()
 const router = useRouter()
 
+const showAlert = ref(false);
 
 function login (){
     if(username.value === store.user.username && password.value === store.user.password){
         store.user.isAuthenticated = true;
         const redirectPath = route.query.redirec || '/private'
-        router.push(redirectPath)
-    }
+        router.push(redirectPath);
+    
+      } else {
+    showAlert.value = true;
+  }
 }
+    
 </script>
 
 <template> 
@@ -41,19 +46,18 @@ function login (){
 
       </div>
 
-      <!-- <div class=" form-control p-3 mb-2 text-black"> -->
+        <button type="submit" class=" form-control btn btn border border-black mt-3">Log in</button> 
 
-          <button type="submit" class=" form-control btn btn border border-black mt-3">Log in</button> 
-
-        <!-- </div> -->
-      
+      <div v-if="showAlert" class="alert alert-danger mt-3" role="alert">
+         Invalid username or password. Please try again.
+      </div>
     </form> 
-    
-   
   </body>
 </template>
 
 <style lang="scss" scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
 body {
 background-image: url("../assets/Images/Fondo_poke_5.jpeg");
