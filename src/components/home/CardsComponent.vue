@@ -27,7 +27,6 @@ const updatePokemons = async (url) => {
         name: pokemonData.name,
         image: pokemonData.sprites.front_default,
         type: pokemonData.types[0].type.name,
-        //ability: pokemonData.ability[0].ability.name,
         ability: pokemonData.abilities.map((item) => item.ability.name),        
         nature: pokemonData.nature,
         stats: stats
