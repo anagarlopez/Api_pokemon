@@ -9,7 +9,7 @@ let isLoaded = ref(false)
 <template>
    <div id="pokemonWorld">
     <h1>Welcome to pokemon World</h1>
-
+    
    <main class="container text-center d-flex flex-wrap">
        <div v-for="pokemon in pokemon" v-if="isLoaded">
          <div class="card text-bg-dark m-2">
