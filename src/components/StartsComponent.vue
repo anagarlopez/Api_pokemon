@@ -53,11 +53,11 @@ label {
 
 label:hover,
 label:hover ~ label {
-  color: orange;
+  color: yellow;
 }
 
 input[type="radio"]:checked ~ label {
-  color: orange;
+  color: yellow;
 }
 
 </style>
