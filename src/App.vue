@@ -17,7 +17,6 @@ import HomeView from './views/HomeView.vue';
  
 <main>
   <RouterView />
-  <HomeView />
  
   <FooterComponent />
 </main>
