@@ -6,8 +6,9 @@
 
   <header>
       <nav>
-        <img src="./../assets/photos/" alt="Logo_pokemon">
-  </nav>
+        <img src="./../assets/photos/Logos/Logo_de_Pokémon_HOME.png" alt="Logo_pokemon" class="logo">
+        <img src="./../assets/photos/Logos/Pokebola.png" alt="poke_bola" class="bola">
+      </nav>
      
 </header>
 
@@ -17,21 +18,19 @@
 <style lang="scss" scoped>
 
   @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
+  
   nav {
-
-background-color: #B1230F;
-width: 100%;
-height: 20vh
-opacity 2;
-
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-gap: 5%;
-
-font-family: 'Jockey One', sans-serif;
-color: black;
-padding: 10px;
+    background-color: #B1230F;
+    width: 100%;
+    height: 20vh
+    opacity 2;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 5%;
+    font-family: 'Jockey One', sans-serif;
+    color: black;
+    padding: 10px;
 
 .routerLink {
     text-decoration: none;
@@ -42,13 +41,6 @@ img {
     width: 30%;
     margin-right: 30%;
 }
-}
-*{
-  background-image: url("./assets/photos/Fondo_poke_4.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  font-family: 'Jockey One', sans-serif;
 }
 
 main{
@@ -70,7 +62,7 @@ nav{
     background-color: #B1230F;
     color: black;
 }
-#logo-pokemon{
+.logo{
     float: right;
 }
 
