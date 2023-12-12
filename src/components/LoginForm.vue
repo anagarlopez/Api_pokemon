@@ -16,7 +16,7 @@ const showAlert = ref(false);
 function login (){
     if(username.value === store.user.username && password.value === store.user.password){
         store.user.isAuthenticated = true;
-        const redirectPath = route.query.redirec || '/private'
+        const redirectPath = route.query.redirec || '../views/FavouritesView.vue'
         router.push(redirectPath);
     
       } else {
