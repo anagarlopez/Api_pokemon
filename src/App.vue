@@ -9,15 +9,12 @@ import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
+
+
   <Header1Component />
   <Header2Component />
   <Header3Component />
-  <header>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/favourites">Favourites</RouterLink>
-      
-  </header> 
-
+ 
 <main>
   <RouterView />
   <HomeView />
