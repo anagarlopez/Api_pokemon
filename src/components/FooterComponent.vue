@@ -49,6 +49,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 <style lang="scss" scoped>
 @import './../../styles.scss';
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+footer{
+  font-family: 'Jockey One', sans-serif;
+}
 .icon{
     height: 50px;
     width: 50px; 
