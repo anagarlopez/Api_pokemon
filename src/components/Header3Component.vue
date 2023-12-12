@@ -15,7 +15,7 @@
         <div class="columna">
       <div class="button_bola">
       <img src="./../assets/photos/Logos/Pokebola.png" alt="pokebola" class="bola img-fluid pd-4">
-      <button class="btn btn-primary px-4 bg-danger-rgb btn-outline-dark pd-4" type="button" href="#component">LOG 0UT</button>
+      <button class="btn btn-primary px-4 bg-danger-rgb btn-outline-dark pd-4" type="button" href="./../views/LoginView.vue">LOG OUT</button>
     </div>
     </div> 
 </div>
