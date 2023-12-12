@@ -1,13 +1,17 @@
 <script setup>
 
 import { RouterLink, RouterView } from 'vue-router'
-import HeaderComponent from "./components/HeaderComponent.vue"
+import Header1Component from "./components/Header1Component.vue"
+import Header2Component from "./components/Header2Component.vue"
+import Header3Component from "./components/Header3Component.vue"
 import FooterComponent from "./components/FooterComponent.vue"
 import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
-  <HeaderComponent />
+  <Header1Component />
+  <Header2Component />
+  <Header3Component />
   <header>
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/favourites">Favourites</RouterLink>

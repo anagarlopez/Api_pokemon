@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 </script>
 
 <template>
-   <footer class="text-center" id="footer" style="background-color: rgba(177, 35, 15, 0.8)">
+   <footer id="footer" style="background-color: rgba(177, 35, 15, 0.8)">
     <div class="container pt-1">
     <section class="d-flex justify-content-end mb-1">
       <a
