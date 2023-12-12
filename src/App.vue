@@ -27,4 +27,12 @@ import HomeView from './views/HomeView.vue';
 <style lang="scss" scoped>
 
 @import '../styles.scss';
+.pokemon{
+    margin: 2rem;
+    width: 30%;
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
