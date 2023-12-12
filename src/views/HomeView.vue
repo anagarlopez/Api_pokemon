@@ -14,6 +14,8 @@ let isLoaded = ref(false)
 
 <style lang="scss" scoped>
 
-
+body {
+  background-image: url("./../assets/imagen/photo2.png");
+}
 
 </style>

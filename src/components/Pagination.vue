@@ -8,6 +8,7 @@ const previousUrl = ref('');
 const currentPage = ref(0);
 const totalPages = ref(0);
 const count = ref(0);
+const statPercent = (baseStat) => `${baseStat / 2}%`
 
 const updatePokemons = async (url) => {
   const res = await fetch(url);
@@ -20,19 +21,19 @@ const updatePokemons = async (url) => {
   pokemons.value = await Promise.all(orderedPokemonUrls.map(async (pokemonUrl) => {
     const pokemonRes = await fetch(pokemonUrl);
     const pokemonData = await pokemonRes.json();
-    const stats = pokemonData.stats.map((stat) => ({
-      stat: stat.stat.name,
+    //Estadísticas
+    const stats = pokemonData.stats.map(stat => ({
+      stat: stat.stat,
       base_stat: stat.base_stat,
     }));
     return {
       id: pokemonData.id,
       name: pokemonData.name,
-      image: pokemonData.sprites.front_default,
+      image: pokemonData.sprites.front_default,      
+      type: pokemonData.types[0].type.name,
       order: pokemonData.order,
       ability: pokemonData.abilities.map((item) => item.ability.name),
-      nature: [pokemonData.nature],
       stats: stats,
-      isFlipped: false,
     };
   }));
 };
@@ -65,10 +66,14 @@ const toggleFlip = (pokemon) => {
   pokemon.isFlipped = !pokemon.isFlipped;
 };
 
-onMounted(async () => {
+/* onMounted(async () => {
   const initialUrl = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=12';
   updatePokemons(initialUrl);
-});
+}); */
+
+onMounted(() => {
+  updatePokemons("https://pokeapi.co/api/v2/pokemon?limit=12")
+})
 
 const displayedPages = computed(() => {
   const pages = [];
@@ -105,12 +110,13 @@ const displayedPages = computed(() => {
   }
   return pages;
 });
+
 </script>
 
 <template>
   <div id="app">
     <h1>Pokedex</h1>
-    <header>
+    <section id="pagination">
       <div class="navigation">
         <button @click="prev" :disabled="currentPage === 0">«</button>
         <div class="numbers">
@@ -120,18 +126,42 @@ const displayedPages = computed(() => {
         </div>
         <button @click="next" :disabled="currentPage === totalPages - 1">»</button>
       </div>
-    </header>
+    </section>
     <section>
-      <div class="container">
-        <div class="pokemons">
-          <div v-for="pokemon in pokemons" :key="pokemon.id" @click="toggleFlip(pokemon)">
-            <img :src="getPokemonImage(pokemon)" :alt="pokemon.name" />
-            <p>{{ pokemon.name }}</p>
-            <p class="order"> #{{ pokemon.order }}</p>
-            <div class="pokemon-details" v-if="pokemon.isFlipped">
-              <p>Habilidades: {{ pokemon.ability.join(', ') }}</p>
-              <p>Naturaleza: {{ pokemon.nature.join(', ') }}</p>
-              <p>Estadísticas: {{ JSON.stringify(pokemon.stats) }}</p>
+      <div class="poke-container">
+        <div class="card pokemon grid-poke rounded px-2 py-1" v-for="pokemon in pokemons" :key="pokemon.id">
+          <div class="card__inner" :class=" { 'is-flipped': pokemon.isFlipped }">
+            <div class="card__face card__face--front card-front">
+              <div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div>
+              <div class="img-container"><img :src="pokemon.image" alt=""></div>
+              <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
+              <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
+            </div>
+            <!-- Card trasera -->
+            <div class="card__face card__face--back card-back">
+              <p class="text-primary">Habilidades: </p>
+              <div class="ability text-secondary">
+                <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
+                <p class="characteristics">
+                <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div></p> 
+                <p class="text-primary">Tipo: </p>
+                <p class="type">{{ pokemon.type }}</p>
+                <p class="text-primary">Estadísticas: </p>
+                <div class="stats-container">
+                  <div v-for="stat in pokemon.stats" :key="stat.stat.name" class="stat-container m-1">
+                    <p>{{ stat.stat.name }}</p>
+                    <div class="progress">
+                      <div class="progress-bar"
+                        role="progressbar"
+                        :style="{ width: statPercent(stat.base_stat) }"
+                        :aria-valuenow="stat.base_stat"
+                        aria-valuemin="0"
+                        aria-valuemax="200">{{ stat.base_stat }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Volver</button>  
             </div>
           </div>
         </div>
@@ -140,8 +170,6 @@ const displayedPages = computed(() => {
   </div>
 </template>
 
-
-
 <style lang="scss" scoped>
 
 * {
@@ -149,7 +177,55 @@ const displayedPages = computed(() => {
   padding: 0;
 }
 
-.container {
+
+/* BOTONES PAGINACIÓN */
+#pagination {
+  display: flex;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    margin: 0px auto;
+}
+.navigation .numbers {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.navigation .numbers span button {
+    font-size: 20px;
+    padding: 0 2px;
+    border: 10px;
+    color: red;
+    cursor: pointer;
+}
+.navigation .numbers button:hover {
+    border-radius: 5px;
+    box-shadow: rgba(185, 26, 26, 0.34) 0px 0px 0px 2px;
+
+}
+.navigation > button {
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+    transition: .6s;
+    font-weight: 700;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.navigation > button:hover {
+    transform: scale(1.2);
+}
+
+.navigation button {
+  font-size: 20px;
+  border-radius: 10px;
+  width: 40px;
+  background-color: rgb(221, 119, 119);
+  border: 1px white solid;
+}
+.poke-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
@@ -163,7 +239,10 @@ const displayedPages = computed(() => {
   //margin: 100px auto 0;
   width: 350px;
   height: 600px;
-  //perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .card__inner {
@@ -203,13 +282,12 @@ const displayedPages = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  justify-content: center; 
+  justify-content: space-evenly; 
   text-align: center; 
 }
  
 .card__face--front h2 {
   color: #FFF;
-  font-size: 32px;
 }
 
 .card__face--back {
@@ -217,76 +295,54 @@ const displayedPages = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  justify-content: center; 
+  justify-content: space-evenly; 
   text-align: center; 
 }
 
-// ESTILO BARRA ESTADISTICAS
+.card__face--back .number{
+  text-align: left;
+}
+
+#number-poke {
+  color: blue($color: #000000);
+}
+
+//  BARRA ESTADISTICAS
 .stats-container {
   display: flex;
   flex-direction: column;
 }
 
 .stat-container {
-  margin: 10px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   text-align: left;
 }
 
 .progress {
   width: 100px;
-  margin: 5px;
+  margin-left: 25px;
   background-color: #ddd;
 }
 
 .progress-bar {
-  height: 20px;
-  background-color: #4caf50;
+  height: 18px;
+  background-color: #4d4d4d;
   color: white;
-  line-height: 20px;  
+  line-height: 20px;
+  font-size: 14px;  
 }
 
-/* BOTONES PAGINACIÓN */
-.navigation {
-    display: flex;
-    align-items: center;
-    margin-top: 2%;
+.img-container img {
+    width: 100%;
+    transition: 1s;
 }
-.navigation .numbers {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.navigation .numbers span button {
-    font-size: 20px;
-    padding: 0 2px;
-    font-family: 'Baloo 2', 'helvetica';
-    background-color: #ffffff00;
-    border: 0;
-    color: #fff;
-    cursor: pointer;
-    margin: 0 2px;
-}
-.navigation .numbers button:hover {
-    border-radius: 25px;
-    box-shadow: rgb(253 253 253 / 34%) 0px 0px 0px 2px;
-}
-.navigation > button {
-    font-size: 20px;
-    border: 0;
-    cursor: pointer;
-    transition: .5s;
-    font-weight: 700;
-    background-color: #fff;
-    border-radius: 6px;
-}
-.navigation > button:hover {
+
+.img-container:hover > img {
     transform: scale(1.3);
 }
-.current button{
-    box-shadow: rgb(253 253 253 / 34%) 0px 0px 0px 2px;
-    border-radius: 25px;
-} 
+
+
 
 </style>
 

@@ -4,8 +4,6 @@ import { ref, onMounted } from 'vue'
 const pokemons = ref ([])
 const nextUrl = ref('')
 const previousUrl = ref ('')
-//const selectedPokemonId = ref(null)
-//const isFlipped = ref(false)
 const statPercent = (baseStat) => `${baseStat / 2}%`
 
 const updatePokemons = async (url) => {
@@ -17,7 +15,6 @@ const updatePokemons = async (url) => {
     pokemons.value = await Promise.all(data.results.map(async pokemon => {
       const pokemonRes = await fetch(pokemon.url)
       const pokemonData = await pokemonRes.json()
-      //Estadísticas
       const stats = pokemonData.stats.map(stat => ({
         stat: stat.stat,
         base_stat: stat.base_stat
@@ -27,31 +24,26 @@ const updatePokemons = async (url) => {
         name: pokemonData.name,
         image: pokemonData.sprites.front_default,
         type: pokemonData.types[0].type.name,
-        ability: pokemonData.abilities.map((item) => item.ability.name),        
-        nature: pokemonData.nature,
-        stats: stats
+        ability: pokemonData.abilities.map((item) => item.ability.name),  
+        stats: stats,
+        order: pokemonData.order,
       }
     }))
   }
 }
+
 
 onMounted(() => {
   updatePokemons("https://pokeapi.co/api/v2/pokemon?limit=12")
 })
 
 
-
-/* const toggleFlip = () => {
-  isFlipped.value = !isFlipped.value;
-}; */
-
 const toggleFlip = (pokemon) => {
   pokemon.isFlipped = !pokemon.isFlipped;
 };
 
-/* function viewMore(pokemonId) {
-  selectedPokemonId.value = pokemonId;  
-} */
+
+
 
 /* function viewMore() {
   if (cardBack.value) {
@@ -120,33 +112,32 @@ const toggleFlip = (pokemon) => {
               <img :src="pokemon.image" alt="">
             </div>
             <div class="info">
-              <h3 class="name">{{ pokemon.name }}</h3>
-              <small class="type">Tipo: {{ pokemon.type }}</small>
-              
-              <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
+              <h3 class="name">{{ pokemon.name }}</h3>         
             </div>
+            <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
           </div>
           <!-- Card trasera -->
           <div class="card__face card__face--back card-back">
-            <div class="pokemon">
               <p class="text-primary">Habilidades: </p>
-              <p class="ability text-secondary">
-                <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></p>
-              <p class="text-primary">Características: </p>
-             </div>
+              <div class="ability text-secondary">
+                <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
               <p class="characteristics">
-                <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div></p>                
-              <p class="text-primary">Naturaleza: </p>
-              <p class="nature">  
-                <div v-for="nature in pokemon.nature" :key="nature">{{ nature }}</div></p>
+                <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div></p>  
+        
+              <p class="text-primary">Tipo: </p>
+              <p class="type">{{ pokemon.type }}</p>
+
               <p class="text-primary">Estadísticas: </p>
-              <p class="stats-container">
+              <div class="stats-container">
                 <div v-for="stat in pokemon.stats" :key="stat.stat.name" class="stat-container m-1">
                   <p>{{ stat.stat.name }}</p>
                   <div class="progress">
-                    <div class="progress-bar" :style="{ width: statPercent(stat.base_stat) }"
-                        :aria-valuenow="stat.base_stat" aria-valuemin="0" aria-valuemax="200">
-                      {{ stat.base_stat }}</div></div></div></p>                
+                    <div class="progress-bar" 
+                      :style="{ width: statPercent(stat.base_stat) }"
+                      :aria-valuenow="stat.base_stat" 
+                      aria-valuemin="0" 
+                      aria-valuemax="200">
+                      {{ stat.base_stat }}</div></div></div></div>                
 
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Volver</button>
             </div>
@@ -180,10 +171,12 @@ const toggleFlip = (pokemon) => {
   margin-top: 20px;
 }
 .card {
-  //margin: 100px auto 0;
   width: 350px;
   height: 600px;
-  //perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .card__inner {
@@ -209,6 +202,7 @@ const toggleFlip = (pokemon) => {
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+  
 }
 .info {
   display: flex;
@@ -218,13 +212,10 @@ const toggleFlip = (pokemon) => {
   text-align: center; 
 }
 .card__face--front {  
-  /* display: flex;
-  align-items: center;
-  justify-content: center;*/
   display: flex;
   flex-direction: column;
   align-items: center; 
-  justify-content: center; 
+  justify-content: space-evenly; 
   text-align: center; 
 }
  
@@ -238,33 +229,15 @@ const toggleFlip = (pokemon) => {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  justify-content: center; 
+  justify-content: space-evenly; 
   text-align: center; 
 }
-
-/*
-.card__content {
-  width: 100%;
-  height: 100%;
-}
-
- .card__header:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(to bottom left, var(--primary) 10%, var(--secondary) 115%);
-  z-index: -1;
-  border-radius: 0px 0px 50% 0px;
-} */
 
 // ESTILO BARRA ESTADISTICAS
 .stats-container {
   display: flex;
   flex-direction: column;
+  
 }
 
 .stat-container {
