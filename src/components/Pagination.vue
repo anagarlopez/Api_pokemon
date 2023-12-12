@@ -9,6 +9,22 @@ const currentPage = ref(0);
 const totalPages = ref(0);
 const count = ref(0);
 const statPercent = (baseStat) => `${baseStat / 2}%`
+const typeColors = {
+  grass: 'rgba(80, 121, 200, 0.8)',
+  fire: 'rgba(233, 142, 77, 0.8)',
+  water: 'rgba(104, 144, 240, 0.8)',
+  bug: 'rgba(168, 184, 32, 0.8)',
+  fighting: 'rgba(217, 217, 217, 0.8)',
+  water: 'rgba(25, 156, 213, 0.8)',
+  grass: 'rgba(67, 244, 244, 0.8)',
+  poison: 'rgba(208, 233, 59, 0.8)',
+  normal: 'rgba(244, 236, 44, 0.8)',
+  ground: 'rgba(131, 97, 227, 0.8)',
+  ghost: 'rgba(76, 243, 183, 0.8)',
+  rock: 'rgba(54, 16, 161, 0.8)',
+  psychic: 'rgba(236, 95, 231, 0.8)',
+  electric: 'rgba(236, 169, 39, 0.8)',
+}
 
 const updatePokemons = async (url) => {
   const res = await fetch(url);
@@ -130,7 +146,10 @@ const displayedPages = computed(() => {
     <section>
       <div class="poke-container">
         <div class="card pokemon grid-poke rounded px-2 py-1" v-for="pokemon in pokemons" :key="pokemon.id">
-          <div class="card__inner" :class=" { 'is-flipped': pokemon.isFlipped }">
+          <div class="card__inner" 
+          :class=" { 'is-flipped': pokemon.isFlipped }" 
+          :style="{ backgroundColor: typeColors[pokemon.type] }"
+          >
             <div class="card__face card__face--front card-front">
               <div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div>
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
@@ -139,14 +158,14 @@ const displayedPages = computed(() => {
             </div>
             <!-- Card trasera -->
             <div class="card__face card__face--back card-back">
-              <p class="text-primary">Habilidades: </p>
-              <div class="ability text-secondary">
+              <p class="text-primary-emphasis">Habilidades: </p>
+              <div class="ability">
                 <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
                 <p class="characteristics">
                 <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div></p> 
-                <p class="text-primary">Tipo: </p>
+                <p class="text-primary-emphasis">Tipo: </p>
                 <p class="type">{{ pokemon.type }}</p>
-                <p class="text-primary">Estadísticas: </p>
+                <p class="text-primary-emphasis">Estadísticas: </p>
                 <div class="stats-container">
                   <div v-for="stat in pokemon.stats" :key="stat.stat.name" class="stat-container m-1">
                     <p>{{ stat.stat.name }}</p>
@@ -203,7 +222,6 @@ const displayedPages = computed(() => {
 .navigation .numbers button:hover {
     border-radius: 5px;
     box-shadow: rgba(185, 26, 26, 0.34) 0px 0px 0px 2px;
-
 }
 .navigation > button {
     font-size: 20px;
@@ -217,7 +235,6 @@ const displayedPages = computed(() => {
 .navigation > button:hover {
     transform: scale(1.2);
 }
-
 .navigation button {
   font-size: 20px;
   border-radius: 10px;
@@ -257,7 +274,6 @@ const displayedPages = computed(() => {
 .card__inner.is-flipped {
   transform: rotateY(180deg);
 }
-
 .card__face {
   position: absolute;
   width: 100%;
