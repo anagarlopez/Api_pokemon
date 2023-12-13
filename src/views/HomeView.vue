@@ -8,7 +8,6 @@ let isLoaded = ref(false)
 </script>
 
 <template>
-   <h2>shjsd</h2>
   <CardsComponent />
 </template>
 
