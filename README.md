@@ -14,9 +14,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 
 
 ## USER FLOW
-<div>
-    <img src="">
-</div>
+[![image-720.png](https://i.postimg.cc/8ztdzxqR/image-720.png)](https://postimg.cc/v4xxP28T)
 <br>
 
 >[!NOTE]
@@ -29,7 +27,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
     <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="SASS" alt="SASS" width="40" height="40"/>&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JS" alt="JS" width="40" height="40"/>&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-plain.svg" title="Bootstrap" alt="Bootstrap" width="40" height="40"/>&nbsp;
-    <img src="https://github.com/devicons/devicon/blob/master/icons/vue/vue-plain.svg" title="vue" alt="vue" width="40" height="40"/>&nbsp;
+   
     
  </div>
    
