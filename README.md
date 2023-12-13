@@ -11,9 +11,9 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 
 ## DISEÑO DE LA WEB CON FIGMA
 ### LAPTOP 💻
-<div style="display: flex; flex-direction: column; align-items: center;>
-    [![figmadise-o.png](https://i.postimg.cc/7YkHqr5b/figmadise-o.png)](https://postimg.cc/Btm9CycG)
-</div>
+
+[![figmadise-o.png](https://i.postimg.cc/7YkHqr5b/figmadise-o.png)](https://postimg.cc/Btm9CycG)
+
 
 
 
