@@ -1,37 +1,34 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import {useStore} from '../../stores/store'
+import { ref, onMounted } from 'vue';
+import { useStore } from '../../stores/store';
 
-
-//PRUEBA DE TIENDA
-const store = useStore()
+const store = useStore();
 
 const agregarAFavoritos = (pokemon) => {
-  store.agregarFavorito(pokemon)
-}
+  pokemon.isFavorite = true;
+  store.agregarFavorito(pokemon);
+};
 
 const removerDeFavoritos = (pokemon) => {
-  store.removerFavorito(pokemon)
-}
+  pokemon.isFavorite = false;
+  store.removerFavorito(pokemon);
+};
 
-// FIN DE TIENDA
+const pokemons = ref([]);
+const nextUrl = ref('');
+const previousUrl = ref('');
 
-const pokemons = ref ([])
-const nextUrl = ref('')
-const previousUrl = ref ('')
-
-const statPercent = (baseStat) => `${baseStat / 2}%`
+const statPercent = (baseStat) => `${baseStat / 2}%`;
 
 const updatePokemons = async (url) => {
   if (url) {
-    const res = await fetch(url)
-    const data = await res.json()    
-    nextUrl.value = data.next
-    previousUrl.value = data.previous
+    const res = await fetch(url);
+    const data = await res.json();
+    nextUrl.value = data.next;
+    previousUrl.value = data.previous;
     pokemons.value = await Promise.all(data.results.map(async pokemon => {
-      const pokemonRes = await fetch(pokemon.url)
-      const pokemonData = await pokemonRes.json()
-      //Estadísticas
+      const pokemonRes = await fetch(pokemon.url);
+      const pokemonData = await pokemonRes.json();
       const stats = pokemonData.stats.map(stat => ({
         stat: stat.stat,
         base_stat: stat.base_stat
@@ -41,25 +38,25 @@ const updatePokemons = async (url) => {
         name: pokemonData.name,
         image: pokemonData.sprites.front_default,
         type: pokemonData.types[0].type.name,
-        //ability: pokemonData.ability[0].ability.name,
-        ability: pokemonData.abilities.map((item) => item.ability.name),        
+        ability: pokemonData.abilities.map((item) => item.ability.name),
         nature: pokemonData.nature,
-        stats: stats
-      }
-    }))
+        stats: stats,
+        isFavorite: false, // Agregar esta propiedad
+      };
+    }));
   }
-}
+};
 
 onMounted(() => {
-  updatePokemons("https://pokeapi.co/api/v2/pokemon?limit=12")
-})
+  updatePokemons("https://pokeapi.co/api/v2/pokemon?limit=12");
+});
 
 const toggleFlip = (pokemon) => {
   pokemon.isFlipped = !pokemon.isFlipped;
 };
 
-
 </script>
+
 
 
 <template>
