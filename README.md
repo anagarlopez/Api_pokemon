@@ -51,7 +51,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 - [Borja Fernández](https://github.com/BarmanDev)
 - [David Colunga](https://github.com/Colunga-D)
 - [Eva López](https://github.com/EvaMLopez)
-- [Ana García]()
+- [Ana García](https://github.com/anagarlopez)
   
 [![200.webp](https://i.postimg.cc/gkXTtxzZ/200.webp)](https://postimg.cc/Cz07zLfh)
 
