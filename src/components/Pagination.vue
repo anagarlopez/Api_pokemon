@@ -3,14 +3,18 @@
 import { ref, onMounted, computed } from 'vue';
 import {useStore} from './../stores/store'
 
+import heartFill from './../assets/photos/iconos/heartFill.svg';
+import heartEmpty from './../assets/photos/iconos/heartEmpty.svg';
 
 const store = useStore()
 
 const agregarAFavoritos = (pokemon) => {
+  pokemon.isFavorite = true;
   store.agregarFavorito(pokemon)
 }
 
 const removerDeFavoritos = (pokemon) => {
+  pokemon.isFavorite = false;
   store.removerFavorito(pokemon)
 }
 
@@ -60,6 +64,7 @@ const updatePokemons = async (url) => {
     const stats = pokemonData.stats.map(stat => ({
       stat: stat.stat,
       base_stat: stat.base_stat,
+      isFavorite: false,
     }));
     return {
       id: pokemonData.id,
@@ -94,9 +99,9 @@ const goToPage = (page) => {
   updatePokemons(`https://pokeapi.co/api/v2/pokemon?offset=${currentPage.value * 12}&limit=12`);
 };
 
-const getPokemonImage = (pokemon) => {
+/* const getPokemonImage = (pokemon) => {
   return pokemon.image || '/images/default.png';
-};
+}; */
 
 const toggleFlip = (pokemon) => {
   pokemon.isFlipped = !pokemon.isFlipped;
@@ -147,7 +152,6 @@ const displayedPages = computed(() => {
   return pages;
 });
 
-const element = document.getElementById("svg_heart");
 
 /* if (window.localStorage.getItem("heartOn")) {  
     element.classList.add("selected");
@@ -160,9 +164,17 @@ const element = document.getElementById("svg_heart");
 }
  */
 
-  const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');  
+/*   const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');  
   const changeImage = () => {
   imageUrl.value = './../assets/photos/iconos/heartFill.svg';
+}; */
+
+const toggleFavorito = (pokemon) => {
+  if (pokemon.isFavorite) {
+    removerDeFavoritos(pokemon);
+  } else {
+    agregarAFavoritos(pokemon);
+  }
 };
 
 
@@ -194,17 +206,14 @@ const element = document.getElementById("svg_heart");
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" id="view" @click="toggleFlip(pokemon)">Ver</button>
-              <a href="#"><img id="heart1" src="./../assets/photos/iconos/heartEmpty.svg" alt="" @click="agregarAFavoritos(pokemon), changeImage()"></a>          
-              <a href="#"><img id="delete" src="./../assets/photos/iconos/trash.svg" alt="" @click="removerDeFavoritos(pokemon)"></a>
+              <a href="#"><img id="heart1" :src="pokemon.isFavorite ? heartFill : heartEmpty" alt="" @click="toggleFavorito(pokemon)" /></a> 
+              <!-- <img src="./../assets/photos/iconos/heartFill.svg" alt=""> -->
             </div>
             <!-- Card back -->
             <div class="card__face card__face--back card-back">
               <p class=".text-body-emphasis"><strong>Habilidades: </strong></p>
               <div class="ability">
                 <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
-                <p class="characteristics">
-                  <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div>
-                </p> 
                 <p class=".text-body-emphasis"><strong>Tipo: </strong></p>
                 <p class="type">{{ pokemon.type }}</p>
                 <p class=".text-body-emphasis" id="textStats"><strong>Estadísticas: </strong></p>
@@ -293,7 +302,7 @@ body {
 
 #view {
   position: relative;
-  bottom: -90px; 
+  bottom: -74px; 
 }
 
 /* BOTONES PAGINACIÓN */
@@ -369,7 +378,7 @@ body {
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
-  cursor: pointer;
+  //cursor: pointer;
   position: relative;
   border-radius: 20px;
 }
@@ -426,6 +435,7 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    cursor: pointer;
     
 }
 
