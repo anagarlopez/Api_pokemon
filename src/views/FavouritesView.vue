@@ -1,5 +1,7 @@
 <template>
+  <Header3Component />
   <div>
+    <SearchPokemon />
     <h2>Mis Pokémon Favoritos</h2>
     <div class="poke-container">
       <div class="card pokemon grid-poke rounded px-2 py-1" v-for="pokemon in store.favoritos" :key="pokemon.id">
@@ -8,6 +10,7 @@
         :style="{ backgroundColor: typeColors[pokemon.type] }">          
           <!-- Card frontal -->
           <div class="card__face card__face--front card-front">
+            <div><StartsComponent /> </div>
             <div class="number"><span class="number"># {{ pokemon.id.toString().padStart(4, 0) }}</span></div>
             <div class="img-container">
               <img :src="pokemon.image" alt="">
@@ -52,6 +55,11 @@
 
 <script setup>
 import {useStore} from '../stores/store'
+import SearchPokemon from '../components/SearchPokemon.vue';
+import Search from '../components/StartsComponent.vue';
+import StartsComponent from '../components/StartsComponent.vue';
+import Header3Component from "./../components/Header3Component.vue";
+
 
 const store = useStore();
 

@@ -146,11 +146,30 @@ const displayedPages = computed(() => {
   return pages;
 });
 
+const element = document.getElementById("svg_heart");
+
+/* if (window.localStorage.getItem("heartOn")) {  
+    element.classList.add("selected");
+}
+ */
+/* function toggleSelected() {
+    var element = document.getElementById("heart1");
+    element.classList.toggle("d-block");
+    window.localStorage.setItem("heartOn", element.classList.contains("selected"));
+}
+ */
+
+  const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');
+  
+  const changeImage = () => {
+  imageUrl.value = './../assets/photos/iconos/heartFill.svg';
+};
+
+
 </script>
 
 <template>  
   <div id="app">
-    <h1>Pokedex</h1>
     <section id="pagination">
       <div class="navigation">
         <button @click="prev" :disabled="currentPage === 0">«</button>
@@ -175,8 +194,9 @@ const displayedPages = computed(() => {
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
-              <button @click="agregarAFavoritos(pokemon)">Agregar a favoritos</button>
-              <button @click="removerDeFavoritos(pokemon)">Remover de favoritos</button>
+              <a href=""><img id="heart1" src="./../assets/photos/iconos/heartEmpty.svg" alt="" @click="agregarAFavoritos(pokemon), changeImage()"></a>             
+                          
+              <a> <img src="./../assets/photos/iconos/trash.svg" alt="" @click="removerDeFavoritos(pokemon)"></a>
             </div>
             <!-- Card back -->
             <div class="card__face card__face--back card-back">

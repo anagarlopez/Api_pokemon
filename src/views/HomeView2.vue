@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Pagination from "../components/Pagination.vue"
-
+import Header1Component from "./../components/Header1Component.vue"
 
 
 //PRUEBA DE TIENDA
@@ -11,8 +11,10 @@ import Pagination from "../components/Pagination.vue"
 </script>
 
 <template>
+    <Header1Component />
+
     <div>
-        <h1>Prueba paginación</h1>
+        
         <Pagination />
 
 

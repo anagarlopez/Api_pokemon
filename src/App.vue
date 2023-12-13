@@ -1,25 +1,30 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router';
-  import { ref, onMounted } from 'vue'
-import SearchPokemon from './components/SearchPokemon.vue';
+
+import { RouterLink, RouterView } from 'vue-router'
+
+
+import FooterComponent from "./components/FooterComponent.vue"
+import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
-  <SearchPokemon></SearchPokemon>
-  <div>
-        <header>
-          <nav>
-              <RouterLink to="/">Home</RouterLink>
-              <RouterLink to="/favourites">Favourites</RouterLink>
-              <RouterLink to="/pokeapi">PokeApi</RouterLink>              
-              <RouterLink to="/pagination">Pagination</RouterLink>
-          </nav>
-        </header>
-      </div>
+
+
+
+  <Header2Component />
+  
+ 
+<main>
   <RouterView />
+ 
+  <FooterComponent />
+</main>
+
 </template>
 
 <style lang="scss" scoped>
+
+@import '../styles.scss';
 .pokemon{
     margin: 2rem;
     width: 30%;
