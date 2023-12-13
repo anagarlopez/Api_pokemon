@@ -12,7 +12,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 ## DISEÑO DE LA WEB CON FIGMA
 ### LAPTOP 💻
 <div style="display: flex; flex-direction: column; align-items: center;>
-    <img src="./src/assets/readme/figmadiseño.png">
+    [![figmadise-o.png](https://i.postimg.cc/7YkHqr5b/figmadise-o.png)](https://postimg.cc/Btm9CycG)
 </div>
 
 
@@ -52,7 +52,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 - [Eva López](https://github.com/EvaMLopez)
 - [Ana García]()
   
-
+[![200.webp](https://i.postimg.cc/5ymZxGrF/200.webp)](https://postimg.cc/N25NDNBg)
 
 
 
