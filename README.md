@@ -10,8 +10,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 
 ## RESULTADO FINAL 🌟
 
-## DISEÑO DE LA WEB CON FIGMA
-### LAPTOP 💻
+## DISEÑO DE LA WEB CON FIGMA ✍️
 
 [![figmadise-o.png](https://i.postimg.cc/7YkHqr5b/figmadise-o.png)](https://postimg.cc/Btm9CycG)
 
@@ -29,10 +28,12 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 
 ## LENGUAJES UTILIZADOS :rocket:
 
-
+<div>
     <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="SASS" alt="SASS" width="40" height="40"/>&nbsp;
-   [![Bootstrap.png](https://i.postimg.cc/2SJvc55V/Bootstrap.png)](https://postimg.cc/rD1KzMxk)
+    <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="SASS" alt="SASS" width="40" height="40"/>&nbsp;
+    <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="SASS" alt="SASS" width="40" height="40"/>&nbsp;
+ </div>
    
 
 
