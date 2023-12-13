@@ -50,8 +50,7 @@
 </template>
 
 <script setup>
-import {useStore} from '../stores/store'
-
+import {useStore} from '../stores/store.js'
 const store = useStore();
 
 const toggleFlip = (pokemon) => {
