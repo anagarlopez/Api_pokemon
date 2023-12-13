@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from "vue";
 import Pagination from "../components/Pagination.vue"
+
+
+
+//PRUEBA DE TIENDA
+
+// FIN DE TIENDA
+
 </script>
 
 <template>

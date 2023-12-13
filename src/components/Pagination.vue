@@ -1,6 +1,18 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
+import {useStore} from './../stores/store'
+
+const store = useStore()
+
+const agregarAFavoritos = (pokemon) => {
+  store.agregarFavorito(pokemon)
+}
+
+const removerDeFavoritos = (pokemon) => {
+  store.removerFavorito(pokemon)
+}
+
 
 const pokemons = ref([]);
 const nextUrl = ref('');
@@ -163,6 +175,8 @@ const displayedPages = computed(() => {
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
+              <button @click="agregarAFavoritos(pokemon)">Agregar a favoritos</button>
+              <button @click="removerDeFavoritos(pokemon)">Remover de favoritos</button>
             </div>
             <!-- Card back -->
             <div class="card__face card__face--back card-back">

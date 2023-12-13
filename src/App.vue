@@ -10,7 +10,7 @@ import SearchPokemon from './components/SearchPokemon.vue';
         <header>
           <nav>
               <RouterLink to="/">Home</RouterLink>
-              <RouterLink to="/about">About</RouterLink>
+              <RouterLink to="/favourites">Favourites</RouterLink>
               <RouterLink to="/pokeapi">PokeApi</RouterLink>              
               <RouterLink to="/pagination">Pagination</RouterLink>
           </nav>
