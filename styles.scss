@@ -1,0 +1,24 @@
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Zen+Kaku+Gothic+Antique:wght@300;400&display=swap');
+
+/////
+html{
+box-sizing: border-box;
+font-size: 62.5%;
+}
+
+*, *::before, *::after{
+box-sizing: inherit;
+} 
+
+
+html {
+line-height: 1.15rem; /* 1 */
+-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+
+body {
+margin: 0;
+}
