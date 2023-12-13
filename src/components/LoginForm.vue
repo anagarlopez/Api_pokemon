@@ -60,7 +60,7 @@ function login (){
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
 body {
-background-image: url("../assets/Images/Fondo_poke_5.jpeg");
+background-image: url("../assets/phqotos/Fondo_poke_5.jpeg");
 background-size: cover;
 background-repeat: no-repeat;
 height: 100vh;

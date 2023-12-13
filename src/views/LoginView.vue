@@ -7,8 +7,11 @@ import Header2Component from "../components/Header2Component.vue"
 <template>
   <Header2Component />
 
+  <buttonComponent />
+
     <div>
         <LoginForm />
+       
     </div>
 
 </template>    
