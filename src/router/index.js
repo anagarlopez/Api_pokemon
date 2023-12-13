@@ -20,6 +20,12 @@ const router = createRouter({
     component: LoginView
    },
 
+   {
+    path: '/about',
+    name: 'about',
+    component: AboutView
+   },
+
   {
     path: '/favourites',
     name: 'favourites',
