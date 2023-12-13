@@ -33,7 +33,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 </div>
 <br>
 
->.[NOTE].
+>[!NOTE]
 > 🧾
 
 ## LENGUAJES UTILIZADOS :rocket:
@@ -65,7 +65,7 @@ El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API
 
 
 
->[IMPORTANT]
+>[!IMPORTANT]
 >
 ## INSTALACIÓN DEL PROYECTO 
 ```
