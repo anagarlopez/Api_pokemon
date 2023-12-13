@@ -2,12 +2,16 @@
 
 import { ref } from "vue";
 import CardsComponent from "../components/home/CardsComponent.vue";
+import Header1Component from "../components/Header1Component.vue"
+
 
 let isLoaded = ref(false)
 
 </script>
 
 <template>
+    <Header1Component />
+
 <body>
     <main></main>
     <CardsComponent />

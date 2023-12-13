@@ -1,4 +1,5 @@
 <template>
+ <SearchPokemon />
   <div>
     <h2>Mis Pokémon Favoritos</h2>
     <div class="poke-container">
