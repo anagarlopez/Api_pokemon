@@ -3,6 +3,7 @@
 import { ref, onMounted, computed } from 'vue';
 import {useStore} from './../stores/store'
 
+
 const store = useStore()
 
 const agregarAFavoritos = (pokemon) => {
@@ -12,7 +13,6 @@ const agregarAFavoritos = (pokemon) => {
 const removerDeFavoritos = (pokemon) => {
   store.removerFavorito(pokemon)
 }
-
 
 const pokemons = ref([]);
 const nextUrl = ref('');
@@ -64,7 +64,8 @@ const updatePokemons = async (url) => {
     return {
       id: pokemonData.id,
       name: pokemonData.name,
-      image: pokemonData.sprites.front_default,      
+      //image: pokemonData.sprites.front_default,      
+      image: pokemonData.sprites.other.home.front_default,
       type: pokemonData.types[0].type.name,
       order: pokemonData.order,
       ability: pokemonData.abilities.map((item) => item.ability.name),
@@ -159,8 +160,7 @@ const element = document.getElementById("svg_heart");
 }
  */
 
-  const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');
-  
+  const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');  
   const changeImage = () => {
   imageUrl.value = './../assets/photos/iconos/heartFill.svg';
 };
@@ -190,25 +190,24 @@ const element = document.getElementById("svg_heart");
           >
            <!-- Card back -->
             <div class="card__face card__face--front card-front">
-              <div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div>
+            <strong><div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div></strong>
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
-              <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
-              <a href=""><img id="heart1" src="./../assets/photos/iconos/heartEmpty.svg" alt="" @click="agregarAFavoritos(pokemon), changeImage()"></a>             
-                          
-              <a> <img src="./../assets/photos/iconos/trash.svg" alt="" @click="removerDeFavoritos(pokemon)"></a>
+              <button class="btn btn-outline-dark btn-mx-aut d-block px-2" id="view" @click="toggleFlip(pokemon)">Ver</button>
+              <a href="#"><img id="heart1" src="./../assets/photos/iconos/heartEmpty.svg" alt="" @click="agregarAFavoritos(pokemon), changeImage()"></a>          
+              <a href="#"><img id="delete" src="./../assets/photos/iconos/trash.svg" alt="" @click="removerDeFavoritos(pokemon)"></a>
             </div>
             <!-- Card back -->
             <div class="card__face card__face--back card-back">
-              <p class="text-primary-emphasis">Habilidades: </p>
+              <p class=".text-body-emphasis"><strong>Habilidades: </strong></p>
               <div class="ability">
                 <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
                 <p class="characteristics">
                   <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div>
                 </p> 
-                <p class="text-primary-emphasis">Tipo: </p>
+                <p class=".text-body-emphasis"><strong>Tipo: </strong></p>
                 <p class="type">{{ pokemon.type }}</p>
-                <p class="text-primary-emphasis">Estadísticas: </p>
+                <p class=".text-body-emphasis" id="textStats"><strong>Estadísticas: </strong></p>
                 <div class="stats-container">
                   <div v-for="stat in pokemon.stats" :key="stat.stat.name" class="stat-container m-1">
                     <p>{{ stat.stat.name }}</p>
@@ -223,7 +222,7 @@ const element = document.getElementById("svg_heart");
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Volver</button>  
+                <button class="btn btn-outline-dark btn-mx-aut d-block px-2" id="back" @click="toggleFlip(pokemon)">Volver</button>  
             </div>
           </div>
         </div>
@@ -258,26 +257,59 @@ body {
   background-image: url("./../assets/imagen/prueba2.jpg");
 }
 
+#number-poke{
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 20px;;
+}
 .ability {
   position: absolute;
-    top: 60px;;
-    font-size: 15px;
+  top: 68px;;
+  font-size: 15px;
+}
+.type {
+  position: absolute;
+  top: 180px;;
+  font-size: 15px;
+}
+
+#heart1 {
+  position: relative;
+    top: -465px;
+    left: 130px;
+}
+
+#delete {
+  position: relative;
+  top: -520px;
+  left: 100px;
+}
+
+.name {
+  position: relative;
+  bottom: -30px; 
+}
+
+#view {
+  position: relative;
+  bottom: -90px; 
 }
 
 /* BOTONES PAGINACIÓN */
 #pagination {
   display: flex;
 }
-
-.navigation {
-    display: flex;
-    align-items: center;
-    margin-bottom: 3rem;
-    margin: 0px auto;
+.navigation { 
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  margin: 0px auto;
 }
 .navigation .numbers {
-    margin-left: 15px;
-    margin-right: 15px;
+  margin: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .navigation .numbers span button {
     font-size: 20px;
@@ -330,6 +362,7 @@ body {
   flex-direction: column;
   background: none;
   border: none;
+  
 }
 .card__inner {
   width: 100%;
@@ -338,6 +371,7 @@ body {
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
+  border-radius: 20px;
 }
 .card__inner.is-flipped {
   transform: rotateY(180deg);
@@ -387,18 +421,12 @@ body {
   text-align: left;
 }
 
-#number-poke{
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    font-size: 20px;;
-}
-
 .card img {
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
+    
 }
 
 // CARD EFFECTS
@@ -407,8 +435,13 @@ body {
     transition: 1s;
 }
 
+.img-container  {
+    width: 80%;
+    transition: 1s;
+}
+
 img {
-  width: 100%;
+  width: 80%;
 }
 
 .img-container:hover > img {
@@ -436,10 +469,10 @@ img {
 }
 
 .progress-bar {
-  height: 18px;
+  height: 16px;
   background-color: #4d4d4d;
   color: white;
-  line-height: 20px;
+  line-height: 18px;
   font-size: 14px;  
 }
 

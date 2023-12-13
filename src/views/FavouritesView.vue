@@ -56,10 +56,8 @@
 <script setup>
 import {useStore} from '../stores/store'
 import SearchPokemon from '../components/SearchPokemon.vue';
-import Search from '../components/StartsComponent.vue';
 import StartsComponent from '../components/StartsComponent.vue';
 import Header3Component from "./../components/Header3Component.vue";
-
 
 const store = useStore();
 
