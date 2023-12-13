@@ -13,5 +13,5 @@ import Header2Component from "../components/Header2Component.vue"
         <LoginForm />
        
     </div>
-
+    
 </template>    
