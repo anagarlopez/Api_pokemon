@@ -10,9 +10,19 @@ import Pagination from "../components/Pagination.vue"
 
 
     </div>
+
+
+
 </template>
 
 
-<style lang="scss" scoped>
+<style>
+
+body {
+  background-image: url(./../assets/imagen/photo1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 </style>

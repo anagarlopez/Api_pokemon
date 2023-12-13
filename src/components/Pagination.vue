@@ -10,11 +10,11 @@ const totalPages = ref(0);
 const count = ref(0);
 const statPercent = (baseStat) => `${baseStat / 2}%`
 const typeColors = {
-  grass: 'rgba(80, 121, 200, 0.8)',
-  fire: 'rgba(233, 142, 77, 0.8)',
-  water: 'rgba(104, 144, 240, 0.8)',
-  bug: 'rgba(168, 184, 32, 0.8)',
-  fighting: 'rgba(217, 217, 217, 0.8)',
+  grass: 'rgba(80, 121, 200, 0.6)',
+  fire: 'rgba(233, 142, 77, 0.6)',
+  water: 'rgba(104, 144, 240, 0.6)',
+  bug: 'rgba(168, 184, 32, 0.6)',
+  fighting: 'rgba(115, 126, 124, 0.6)',
   water: 'rgba(25, 156, 213, 0.8)',
   grass: 'rgba(67, 244, 244, 0.8)',
   poison: 'rgba(208, 233, 59, 0.8)',
@@ -23,7 +23,14 @@ const typeColors = {
   ghost: 'rgba(76, 243, 183, 0.8)',
   rock: 'rgba(54, 16, 161, 0.8)',
   psychic: 'rgba(236, 95, 231, 0.8)',
-  electric: 'rgba(236, 169, 39, 0.8)',
+  electric: 'rgba(236, 169, 39, 0.8)',  
+  ice: 'rgba(55, 116, 136, 0.8)',
+  steel: 'rgba(55, 136, 116, 0.8)',
+  flying: 'rgba(59, 22, 118, 0.8)',
+  dark: 'rgba(42, 39, 47, 0.8)',
+  fairy: 'rgba(12, 79, 59, 0.8)',
+  steel: 'rgba(247, 162, 101, 0.8)',
+  dragon: 'rgba(74, 134, 119, 0.8)',
 }
 
 const updatePokemons = async (url) => {
@@ -129,7 +136,7 @@ const displayedPages = computed(() => {
 
 </script>
 
-<template>
+<template>  
   <div id="app">
     <h1>Pokedex</h1>
     <section id="pagination">
@@ -145,24 +152,26 @@ const displayedPages = computed(() => {
     </section>
     <section>
       <div class="poke-container">
-        <div class="card pokemon grid-poke rounded px-2 py-1" v-for="pokemon in pokemons" :key="pokemon.id">
+        <div class="card pokemon grid-poke" v-for="pokemon in pokemons" :key="pokemon.id">
           <div class="card__inner" 
           :class=" { 'is-flipped': pokemon.isFlipped }" 
           :style="{ backgroundColor: typeColors[pokemon.type] }"
           >
+           <!-- Card back -->
             <div class="card__face card__face--front card-front">
               <div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div>
               <div class="img-container"><img :src="pokemon.image" alt=""></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" @click="toggleFlip(pokemon)">Ver</button>
             </div>
-            <!-- Card trasera -->
+            <!-- Card back -->
             <div class="card__face card__face--back card-back">
               <p class="text-primary-emphasis">Habilidades: </p>
               <div class="ability">
                 <div v-for="ability in pokemon.ability" :key="ability">{{ ability }}</div></div>
                 <p class="characteristics">
-                <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div></p> 
+                  <div v-for="characteristic in pokemon.characteristics" :key="characteristic">{{ characteristic }}</div>
+                </p> 
                 <p class="text-primary-emphasis">Tipo: </p>
                 <p class="type">{{ pokemon.type }}</p>
                 <p class="text-primary-emphasis">Estadísticas: </p>
@@ -191,11 +200,35 @@ const displayedPages = computed(() => {
 
 <style lang="scss" scoped>
 
+/* 
+video{
+    z-index: -1000;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+} */
+
 * {
   margin: 0;
   padding: 0;
 }
 
+body {
+  background-image: url("./../assets/imagen/prueba2.jpg");
+}
+
+.ability {
+  position: absolute;
+    top: 60px;;
+    font-size: 15px;
+}
 
 /* BOTONES PAGINACIÓN */
 #pagination {
@@ -252,16 +285,18 @@ const displayedPages = computed(() => {
   margin-bottom: 40px;
   margin-top: 20px;
 }
+
+// CARDS
 .card {
-  //margin: 100px auto 0;
   width: 350px;
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: none;
+  border: none;
 }
-
 .card__inner {
   width: 100%;
   height: 100%;
@@ -270,7 +305,6 @@ const displayedPages = computed(() => {
   cursor: pointer;
   position: relative;
 }
-
 .card__inner.is-flipped {
   transform: rotateY(180deg);
 }
@@ -319,9 +353,34 @@ const displayedPages = computed(() => {
   text-align: left;
 }
 
-#number-poke {
-  color: blue($color: #000000);
+#number-poke{
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 20px;;
 }
+
+.card img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+// CARD EFFECTS
+.img-container img {
+    width: 100%;
+    transition: 1s;
+}
+
+img {
+  width: 100%;
+}
+
+.img-container:hover > img {
+    transform: scale(1.3);
+}
+
 
 //  BARRA ESTADISTICAS
 .stats-container {
@@ -339,6 +398,7 @@ const displayedPages = computed(() => {
   width: 100px;
   margin-left: 25px;
   background-color: #ddd;
+  border: 1px solid darkgray;
 }
 
 .progress-bar {
@@ -349,14 +409,8 @@ const displayedPages = computed(() => {
   font-size: 14px;  
 }
 
-.img-container img {
-    width: 100%;
-    transition: 1s;
-}
 
-.img-container:hover > img {
-    transform: scale(1.3);
-}
+
 
 
 

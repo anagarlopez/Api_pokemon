@@ -28,4 +28,5 @@ import SearchPokemon from './components/SearchPokemon.vue';
     justify-content: center;
     align-items: center;
   }
+
 </style>
