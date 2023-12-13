@@ -2,6 +2,17 @@
 import { defineStore } from 'pinia';
 
 export const useStore = defineStore({
+
+  //add favorite 
+  id: 'main',
+  state: () => ({
+    pokemons: [],
+  }),
+  actions: {
+    addPokemon(pokemon) {
+      this.pokemons.push(pokemon);
+    },
+  },
   // nombre de la tienda
   id: 'pokedex',
   state: () => ({

@@ -1,5 +1,5 @@
 <script setup>
-
+import AddPokemon from './components/AddPokemon.vue'; // Ajusta la ruta según la ubicación de tu componente
 import { RouterLink, RouterView } from 'vue-router'
 import FooterComponent from "./components/FooterComponent.vue"
 </script>
@@ -8,6 +8,16 @@ import FooterComponent from "./components/FooterComponent.vue"
  
 <main>
   <RouterView />
+  <div id="app">
+    <add-pokemon></add-pokemon>
+
+    <h2>Listado de Pokémon:</h2>
+    <ul>
+      <li v-for="pokemon in $store.pokemons" :key="pokemon.name">
+        {{ pokemon.name }} - <img :src="pokemon.image" alt="Imagen de Pokémon">
+      </li>
+    </ul>
+  </div>
  
   <FooterComponent />
 </main>
