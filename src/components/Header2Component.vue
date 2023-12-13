@@ -15,7 +15,7 @@
         <div class="columna">
       <div class="button_bola">
       <img src="./../assets/photos/Logos/Pokebola.png" alt="pokebola" class="bola img-fluid pd-4">
-      <a href="/"><button class="btn btn-primary px-4 bg-danger-rgb btn-outline-dark pd-4" type="button">INICIO</button></a>
+      <a href="/"><button class="btn btn-primary px-4 bg-danger-rgb btn-outline-dark pd-4" type="button">HOME</button></a>
     </div>
     </div> 
 </div>
