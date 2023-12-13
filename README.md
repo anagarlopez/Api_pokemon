@@ -4,10 +4,6 @@
 
 El proyecto consiste en desarrollar un explorador de Pokémon que utiliza la API de Pokémon para obtener información detallada sobre distintas especies de Pokémon. El explorador permitirá a los usuarios buscar, filtrar y obtener información específica sobre los Pokémon, así como también mostrar detalles como estadísticas, habilidades, tipos y más. 🤓
 
-<p align="center">
-  <img src=""/>
-</p>
-
 ## RESULTADO FINAL 🌟
 
 ## DISEÑO DE LA WEB CON FIGMA ✍️
