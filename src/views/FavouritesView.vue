@@ -10,7 +10,7 @@
         :style="{ backgroundColor: typeColors[pokemon.type] }">          
           <!-- Card frontal -->
           <div class="card__face card__face--front card-front">
-            <div><StartsComponent /> </div>
+            <div id="starts"><StartsComponent /> </div>
             <div class="number"><span class="number"># {{ pokemon.id.toString().padStart(4, 0) }}</span></div>
             <div class="img-container">
               <img :src="pokemon.image" alt="">
@@ -122,10 +122,42 @@ body {
   background-image: url("./../assets/imagen/prueba2.jpg");
 }
 
+#number-poke{
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 20px;;
+}
 .ability {
   position: absolute;
-    top: 60px;;
-    font-size: 15px;
+  top: 72px;;
+  font-size: 15px;
+}
+.type {
+  position: absolute;
+  top: 150px;
+  font-size: 15px;
+}
+
+#starts {
+  position: relative;
+    top: -510px;
+    left: 120px;
+}
+
+.name {
+  position: relative;
+  bottom: -30px; 
+}
+
+#view {
+  position: relative;
+  bottom: -74px; 
+}
+
+#back {
+  position: relative;
+  bottom: -22px; 
 }
 
 /* BOTONES PAGINACIÓN */

@@ -60,7 +60,6 @@ const updatePokemons = async (url) => {
   pokemons.value = await Promise.all(orderedPokemonUrls.map(async (pokemonUrl) => {
     const pokemonRes = await fetch(pokemonUrl);
     const pokemonData = await pokemonRes.json();
-    //Estadísticas
     const stats = pokemonData.stats.map(stat => ({
       stat: stat.stat,
       base_stat: stat.base_stat,
@@ -68,8 +67,7 @@ const updatePokemons = async (url) => {
     }));
     return {
       id: pokemonData.id,
-      name: pokemonData.name,
-      //image: pokemonData.sprites.front_default,      
+      name: pokemonData.name,  
       image: pokemonData.sprites.other.home.front_default,
       type: pokemonData.types[0].type.name,
       order: pokemonData.order,
@@ -99,18 +97,10 @@ const goToPage = (page) => {
   updatePokemons(`https://pokeapi.co/api/v2/pokemon?offset=${currentPage.value * 12}&limit=12`);
 };
 
-/* const getPokemonImage = (pokemon) => {
-  return pokemon.image || '/images/default.png';
-}; */
-
 const toggleFlip = (pokemon) => {
   pokemon.isFlipped = !pokemon.isFlipped;
 };
 
-/* onMounted(async () => {
-  const initialUrl = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=12';
-  updatePokemons(initialUrl);
-}); */
 
 onMounted(() => {
   updatePokemons("https://pokeapi.co/api/v2/pokemon?limit=12")
@@ -152,23 +142,6 @@ const displayedPages = computed(() => {
   return pages;
 });
 
-
-/* if (window.localStorage.getItem("heartOn")) {  
-    element.classList.add("selected");
-}
- */
-/* function toggleSelected() {
-    var element = document.getElementById("heart1");
-    element.classList.toggle("d-block");
-    window.localStorage.setItem("heartOn", element.classList.contains("selected"));
-}
- */
-
-/*   const imageUrl = ref('./../assets/photos/iconos/heartEmpty.svg');  
-  const changeImage = () => {
-  imageUrl.value = './../assets/photos/iconos/heartFill.svg';
-}; */
-
 const toggleFavorito = (pokemon) => {
   if (pokemon.isFavorite) {
     removerDeFavoritos(pokemon);
@@ -200,16 +173,15 @@ const toggleFavorito = (pokemon) => {
           :class=" { 'is-flipped': pokemon.isFlipped }" 
           :style="{ backgroundColor: typeColors[pokemon.type] }"
           >
-           <!-- Card back -->
+
             <div class="card__face card__face--front card-front">
             <strong><div class="number"><span class="number" id="number-poke"># {{ pokemon.order.toString().padStart(4, 0) }}</span></div></strong>
-              <div class="img-container"><img :src="pokemon.image" alt=""></div>
+              <div class="img-container"><img :src="pokemon.image" alt="Imagen del Pokémon"></div>
               <div class="info"><h3 class="name">{{ pokemon.name }}</h3></div>
               <button class="btn btn-outline-dark btn-mx-aut d-block px-2" id="view" @click="toggleFlip(pokemon)">Ver</button>
               <a href="#"><img id="heart1" :src="pokemon.isFavorite ? heartFill : heartEmpty" alt="" @click="toggleFavorito(pokemon)" /></a> 
-              <!-- <img src="./../assets/photos/iconos/heartFill.svg" alt=""> -->
+
             </div>
-            <!-- Card back -->
             <div class="card__face card__face--back card-back">
               <p class=".text-body-emphasis"><strong>Habilidades: </strong></p>
               <div class="ability">
@@ -242,21 +214,6 @@ const toggleFavorito = (pokemon) => {
 
 <style lang="scss" scoped>
 
-/* 
-video{
-    z-index: -1000;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-} */
-
 * {
   margin: 0;
   padding: 0;
@@ -274,27 +231,20 @@ body {
 }
 .ability {
   position: absolute;
-  top: 68px;;
+  top: 72px;;
   font-size: 15px;
 }
 .type {
   position: absolute;
-  top: 180px;;
+  top: 150px;
   font-size: 15px;
 }
 
 #heart1 {
   position: relative;
-    top: -465px;
-    left: 130px;
+    top: -510px;
+    left: 140px;
 }
-
-#delete {
-  position: relative;
-  top: -520px;
-  left: 100px;
-}
-
 .name {
   position: relative;
   bottom: -30px; 
@@ -305,7 +255,11 @@ body {
   bottom: -74px; 
 }
 
-/* BOTONES PAGINACIÓN */
+#back {
+  position: relative;
+  bottom: -22px; 
+}
+
 #pagination {
   display: flex;
 }
@@ -360,8 +314,6 @@ body {
   margin-bottom: 40px;
   margin-top: 20px;
 }
-
-// CARDS
 .card {
   width: 350px;
   height: 600px;
@@ -370,15 +322,13 @@ body {
   align-items: center;
   flex-direction: column;
   background: none;
-  border: none;
-  
+  border: none;  
 }
 .card__inner {
   width: 100%;
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
-  //cursor: pointer;
   position: relative;
   border-radius: 20px;
 }
